@@ -9,12 +9,15 @@ public class Finish : MonoBehaviour
 
     private bool levelCompleted = false;
 
+    private ItemColector itemColector;
+
     private void Start() {
         finishSound = GetComponent<AudioSource>();
+        itemColector = FindObjectOfType<ItemColector>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.name == "Player" && !levelCompleted) {
+        if(other.gameObject.name == "Player" && !levelCompleted && itemColector.isFullCherries()) {
             finishSound.Play();
             levelCompleted = true;
             Invoke("CompleteLevel", 2f);

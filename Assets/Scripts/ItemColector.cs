@@ -15,7 +15,18 @@ public class ItemColector : MonoBehaviour
             collectionSoundEffect.Play();
             Destroy(other.gameObject);
             cherries++;
-            cherriesText.text = "Cherries: " + cherries;
+            cherriesText.text = "Cherries: " + cherries + "/10"; 
         }
+    }
+
+    public int getCherries() {
+        return cherries;
+    }
+
+    public bool isFullCherries() {
+        if(cherries == 10) {
+            return true;
+        }
+        return false;
     }
 }
